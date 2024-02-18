@@ -4,6 +4,7 @@ import com.italo.votingmanager.controller.requests.CreateAgendaRequest;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 
@@ -14,6 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Agenda {
+    @Getter
     @Id
     private String id;
     private String name;
@@ -39,4 +41,5 @@ public class Agenda {
         this.closingTime = LocalDateTime.now();
         return this;
     }
+
 }

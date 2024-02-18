@@ -3,7 +3,6 @@ package com.italo.votingmanager.service;
 import com.italo.votingmanager.repository.AgendaRepository;
 import com.italo.votingmanager.repository.entities.Agenda;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Timer;
@@ -18,16 +17,19 @@ public class AgendaService {
         Agenda agenda = agendaRepository.findById(agendaId).orElseThrow(() -> new RuntimeException("Not Found"));
         agenda.openForVoting();
         agendaRepository.save(agenda);
+        scheduleClosingTime(duration, agenda);
+    }
+
+    private void scheduleClosingTime(int duration, Agenda agenda) {
         Timer t = new Timer();
         t.schedule(new TimerTask() {
             @Override
             public void run() {
-                System.out.println("closing voting session for agenda " + agendaId);
+                System.out.println("closing voting session for agenda " + agenda.getId());
                 agenda.closeForVoting();
                 agendaRepository.save(agenda);
             }
-        }, duration* 1000L);
-
+        }, duration * 1000L);
     }
 
     public void createAgenda(Agenda agenda) {
