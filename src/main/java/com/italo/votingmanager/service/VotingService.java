@@ -6,6 +6,7 @@ import com.italo.votingmanager.repository.AgendaRepository;
 import com.italo.votingmanager.repository.VotingRepository;
 import com.italo.votingmanager.repository.entities.Agenda;
 import com.italo.votingmanager.repository.entities.Vote;
+import com.italo.votingmanager.repository.enums.VoteEnum;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,12 @@ public class VotingService {
         votingRepository.findByAgendaIdAndAuthorId(vote.getAgendaId(), vote.getAuthorId()).ifPresent(v -> {
             throw new VotingException("Esse autor ja votou e nao pode votar novamente");
         });
+    }
+
+    public int getVotesCountByVoteEnum(VoteEnum v, String agendaId){
+        if(v.equals(VoteEnum.SIM)){
+            return votingRepository.findCountVotesYesByAgendaId(agendaId);
+        } else return votingRepository.findCountVotesNoByAgendaId(agendaId);
     }
 
 }

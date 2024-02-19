@@ -1,4 +1,4 @@
-package com.italo.votingmanager.controller.requests;
+package com.italo.votingmanager.controller.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class VotingRequest {
-    private String authorId;
+public class VotingResultResponse {
     private String agendaId;
-    private String vote;
+    private int votesSIM;
+    private int votesNAO;
 }
