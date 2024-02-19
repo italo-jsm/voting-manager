@@ -1,6 +1,7 @@
 package com.italo.votingmanager.repository.entities;
 
 import com.italo.votingmanager.controller.requests.CreateAgendaRequest;
+import com.italo.votingmanager.exceptions.AgendaException;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
@@ -33,7 +34,7 @@ public class Agenda {
             this.open = true;
             this.openingTime = LocalDateTime.now();
             return this;
-        }else throw new RuntimeException("Agenda ja esta aberta");
+        }else throw new AgendaException("Agenda ja esta aberta");
     }
 
     public Agenda closeForVoting(){
