@@ -23,6 +23,7 @@ public class Agenda {
     private String description;
     private LocalDateTime openingTime;
     private LocalDateTime closingTime;
+    @Getter
     private boolean open;
 
     public static Agenda createFromRequest(CreateAgendaRequest request){

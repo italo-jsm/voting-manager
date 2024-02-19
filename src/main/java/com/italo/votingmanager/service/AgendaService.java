@@ -1,6 +1,7 @@
 package com.italo.votingmanager.service;
 
 import com.italo.votingmanager.controller.requests.OpenVotingRequest;
+import com.italo.votingmanager.exceptions.AgendaException;
 import com.italo.votingmanager.repository.AgendaRepository;
 import com.italo.votingmanager.repository.entities.Agenda;
 import lombok.AllArgsConstructor;
@@ -43,4 +44,17 @@ public class AgendaService {
     public Agenda createAgenda(Agenda agenda) {
         return this.agendaRepository.save(agenda);
     }
+
+    public void validateAgenda(String agendaId){
+        Agenda agenda = getAgenda(agendaId);
+        if(!agenda.isOpen()){
+            throw new AgendaException("Agenda nao esta aberta para votacao");
+        }
+    }
+
+    private Agenda getAgenda(String agendaId) {
+        Agenda agenda = agendaRepository.findById(agendaId).orElseThrow(() -> new AgendaException("Agenda nao encontrada"));
+        return agenda;
+    }
+
 }
