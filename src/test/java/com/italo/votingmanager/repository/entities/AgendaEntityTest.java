@@ -15,7 +15,7 @@ public class AgendaEntityTest {
         try {
             Agenda createdAgenda = createAgenda();
             assertEquals("Should be equal", "TestName",ReflectionUtils.tryToReadFieldValue(Agenda.class.getDeclaredField("name"), createdAgenda).get());
-            assertEquals("Should be equal", "TestDescription ",ReflectionUtils.tryToReadFieldValue(Agenda.class.getDeclaredField("description"), createdAgenda).get());
+            assertEquals("Should be equal", "TestDescription",ReflectionUtils.tryToReadFieldValue(Agenda.class.getDeclaredField("description"), createdAgenda).get());
             assertNotNull("should not be null", createdAgenda.getId());
         } catch (Exception e) {
             fail("should not throw exception");
