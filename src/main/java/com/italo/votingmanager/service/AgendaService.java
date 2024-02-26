@@ -21,7 +21,7 @@ public class AgendaService {
     public void openAgenda(OpenVotingRequest request){
         Agenda agenda = agendaRepository.findById(request.getAgendaId()).orElseThrow(() -> {
             logger.info("Could not find agenda " + request.getAgendaId());
-            return new RuntimeException("Not Found");
+            return new AgendaException("Agenda nao encontrada");
         });
         agenda.openForVoting();
         agendaRepository.save(agenda);
