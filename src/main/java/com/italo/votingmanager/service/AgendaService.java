@@ -53,8 +53,7 @@ public class AgendaService {
     }
 
     private Agenda getAgenda(String agendaId) {
-        Agenda agenda = agendaRepository.findById(agendaId).orElseThrow(() -> new AgendaException("Agenda nao encontrada"));
-        return agenda;
+        return agendaRepository.findById(agendaId).orElseThrow(() -> new AgendaException("Agenda nao encontrada"));
     }
 
 }
