@@ -61,3 +61,8 @@ curl --location 'localhost:8080/vote/result?agendaId=11b79c2a-2ba0-4eee-a38e-a06
 
 Agenda Id" is the id of the agenda.
 
+### Quality
+This project has the resources to send quality information to a sonar qube instance. To do that you must have a sonar qube server instance running. You can do that 
+with docker for an example. Just follow the steps in this article: https://www.baeldung.com/sonar-qube
+
+The maven plugin described on step 4 is already included. 
