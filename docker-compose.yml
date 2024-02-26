@@ -8,3 +8,17 @@ services:
       - POSTGRES_DB=votingmanager
     ports:
       - "5432:5432"
+    networks:
+      - vm
+  voting-manager:
+    build: .
+    environment:
+      - VOTING_MANAGER_DB_PASSWORD=votingmanager
+      - VOTING_MANAGER_DB_URL=jdbc:postgresql://postgres:5432/votingmanager
+      - VOTING_MANAGER_DB_USERNAME=votingmanager
+    ports:
+      - "8080:8080"
+    networks:
+      - vm
+networks:
+  vm:
