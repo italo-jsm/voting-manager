@@ -5,7 +5,6 @@ import com.italo.votingmanager.exceptions.AgendaException;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.util.ReflectionUtils;
 
-import java.lang.reflect.Field;
 
 import static org.springframework.test.util.AssertionErrors.*;
 
